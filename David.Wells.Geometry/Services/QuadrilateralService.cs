@@ -20,14 +20,14 @@ namespace David.Wells.Geometry.Services
         {
             QuadrilateralType result = QuadrilateralType.None;
 
-            if (isParralellogram(model))
-                result = QuadrilateralType.Parralellogram;
+            if (isSquare(model))
+                result = QuadrilateralType.Square;
             else if (isTrapezium(model))
                 result = QuadrilateralType.Trapezium;
+            else if (isParralellogram(model))
+                result = QuadrilateralType.Parralellogram;
             else if (isRectangle(model))
                 result = QuadrilateralType.Rectangle;
-            else if (isRhombus(model))
-                result = QuadrilateralType.Rhombus;
             else if (isKite(model))
                 result = QuadrilateralType.Kite;
 

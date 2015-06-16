@@ -12,7 +12,8 @@ namespace David.Wells.Geometry.Models
         Rectangle,
         Rhombus,
         Trapezium,
-        Kite
+        Kite,
+        Square
     }
 
     public class Quadrilateral

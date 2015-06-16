@@ -1,4 +1,3 @@
-D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.csprojResolveAssemblyReference.cache
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\David.Wells.Geometry.dll.config
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\David.Wells.Geometry.dll
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\David.Wells.Geometry.pdb
@@ -53,5 +52,6 @@ D:\Dave\dev\Geometry\David.Wells.Geometry\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\Microsoft.Owin.Security.Google.xml
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Dave\dev\Geometry\David.Wells.Geometry\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.csprojResolveAssemblyReference.cache
 D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.dll
 D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.pdb

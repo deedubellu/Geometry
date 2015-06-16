@@ -22,7 +22,7 @@ namespace David.Wells.Geometry.Controllers
         {
             if (model.Side1 == 0 || model.Side2 == 0 || model.Side3 == 0 || model.Side4 == 0)
             {
-                return Json("Error: Side provided with length: 0");
+                throw new Exception("all sides must have a length greater than 0");
             }
                 
             return Json(service.DetermineType(model));

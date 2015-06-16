@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using David.Wells.Geometry;
 using David.Wells.Geometry.Models;
 using David.Wells.Geometry.Controllers;
 using Moq;
 using David.Wells.Geometry.Services;
+using System.Web.Mvc;
 namespace David.Wells.Geometry.Tests.Controllers
 {
     [TestClass]
@@ -26,7 +26,7 @@ namespace David.Wells.Geometry.Tests.Controllers
             QuadrilateralController controller = new QuadrilateralController(mockedService.Object);
             Quadrilateral model = new Quadrilateral(0, 0, 0, 0);
             // Act
-            JsonResult result = controller.GetQuadilateralType(model) as JsonResult;
+            var result = controller.GetQuadilateralType(model) as JsonResult;
 
             // Assert
             Assert.AreEqual(result.Data, QuadrilateralType.None);
@@ -44,7 +44,7 @@ namespace David.Wells.Geometry.Tests.Controllers
             QuadrilateralController controller = new QuadrilateralController(mockedService);
             Quadrilateral model = new Quadrilateral(5, 5, 5, 5);
             // Act
-            JsonResult result = controller.GetQuadilateralType(model) as JsonResult;
+            var result = controller.GetQuadilateralType(model);
 
             // Assert
             Assert.AreEqual(result.Data, QuadrilateralType.Rhombus);
