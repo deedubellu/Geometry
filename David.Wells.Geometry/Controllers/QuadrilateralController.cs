@@ -34,8 +34,6 @@ namespace David.Wells.Geometry.Controllers
             return Json(service.DetermineType(model));
         }
 
-
-
         public ActionResult GetQuadilateralType (int side1, int side2, int side3, int side4)
         {
             Quadrilateral model = new Quadrilateral(side1, side2, side3, side4);

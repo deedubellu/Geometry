@@ -54,9 +54,10 @@ namespace David.Wells.Geometry.Tests.Controllers
             QuadrilateralController controller = new QuadrilateralController(mockedService.Object);
             Dictionary<QuadrilateralType, Quadrilateral> quadrilaterals = new Dictionary<QuadrilateralType, Quadrilateral>();
 
-            quadrilaterals.Add(QuadrilateralType.Rhombus, new Quadrilateral(10, 10, 10, 10));
-            quadrilaterals.Add(QuadrilateralType.Trapezium, new Quadrilateral(10, 15, 20, 15));
+            quadrilaterals.Add(QuadrilateralType.SquareOrRhombus, new Quadrilateral(10, 10, 10, 10));
+            quadrilaterals.Add(QuadrilateralType.Trapezium, new Quadrilateral(10, 12, 20, 18));
             quadrilaterals.Add(QuadrilateralType.Kite, new Quadrilateral(10, 20, 20, 10));
+            quadrilaterals.Add(QuadrilateralType.ParralellogramOrRectangle, new Quadrilateral(10, 20, 20, 10));
 
             foreach (KeyValuePair<QuadrilateralType, Quadrilateral> item in quadrilaterals)
             {

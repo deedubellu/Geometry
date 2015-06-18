@@ -27,10 +27,12 @@ namespace David.Wells.Geometry.Services
         {
             QuadrilateralType result = QuadrilateralType.None;
 
-            if (isTrapezium(model))
+            if (isSquareOrRhombus(model))
+                result = QuadrilateralType.SquareOrRhombus;
+            else if (isTrapezium(model))
                 result = QuadrilateralType.Trapezium;
-            else if (isParralellogram(model))
-                result = QuadrilateralType.Parralellogram;
+            else if (isParralellogramOrRectangle(model))
+                result = QuadrilateralType.ParralellogramOrRectangle;
             else if (isKite(model))
                 result = QuadrilateralType.Kite;
 
@@ -49,12 +51,12 @@ namespace David.Wells.Geometry.Services
             throw new NotImplementedException();
         }
 
-        private bool isParralellogram(Quadrilateral model)
+        private bool isParralellogramOrRectangle(Quadrilateral model)
         {
             return (model.SideA == model.SideC && model.SideB == model.SideD);
         }
 
-        private bool isSquare(Quadrilateral model)
+        private bool isSquareOrRhombus(Quadrilateral model)
         {
             return (model.SideA == model.SideB &&
                 model.SideA == model.SideC &&
@@ -66,13 +68,5 @@ namespace David.Wells.Geometry.Services
             return model.SideA > 0 || model.SideB > 0 || model.SideC > 0 || model.SideD > 0;
         }
 
-        public bool ValidateAngles(Quadrilateral model)
-        {
-            bool  sumOfAnglesValid = model.AngleAB + model.AngleBC + model.AngleCD + model.AngleDA == 360;
-
-            bool anglesValid = model.AngleAB > 0 && model.AngleBC > 0 && model.AngleCD > 0 && model.AngleDA > 0;
-
-            return sumOfAnglesValid & anglesValid;
-        }
     }
 }
