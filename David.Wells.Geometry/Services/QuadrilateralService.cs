@@ -9,6 +9,8 @@ namespace David.Wells.Geometry.Services
     public interface IQuadrilateralService
     {
         QuadrilateralType DetermineType(Quadrilateral model);
+
+        bool ValidateSides();
     }
     public class QuadrilateralService : IQuadrilateralService
     {
@@ -69,6 +71,12 @@ namespace David.Wells.Geometry.Services
             return (model.Side1 == model.Side2 &&
                 model.Side1 == model.Side3 &&
                 model.Side1 == model.Side4);
+        }
+
+
+        public bool ValidateSides()
+        {
+            return model.Side1 > 0 || model.Side2 > 0 || model.Side3 > 0 || model.Side4 > 0;
         }
     }
 }

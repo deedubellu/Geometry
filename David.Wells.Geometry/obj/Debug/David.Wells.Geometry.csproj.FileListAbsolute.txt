@@ -55,3 +55,6 @@ D:\Dave\dev\Geometry\David.Wells.Geometry\bin\Microsoft.Owin.Security.MicrosoftA
 D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.csprojResolveAssemblyReference.cache
 D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.dll
 D:\Dave\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.pdb
+C:\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.csprojResolveAssemblyReference.cache
+C:\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.dll
+C:\dev\Geometry\David.Wells.Geometry\obj\Debug\David.Wells.Geometry.pdb

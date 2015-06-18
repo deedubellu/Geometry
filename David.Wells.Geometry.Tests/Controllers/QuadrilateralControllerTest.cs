@@ -22,14 +22,20 @@ namespace David.Wells.Geometry.Tests.Controllers
         {
             // Arrange
             Mock<QuadrilateralService> mockedService = new Mock<QuadrilateralService>();
+//            Mock<HttpContextBase> httpContext = new Mock<HttpContextBase>();
 
             QuadrilateralController controller = new QuadrilateralController(mockedService.Object);
+            
             Quadrilateral model = new Quadrilateral(0, 0, 0, 0);
             // Act
             var result = controller.GetQuadilateralType(model) as JsonResult;
 
             // Assert
-            Assert.AreEqual(result.Data, QuadrilateralType.None);
+            Assert.IsInstanceOf(result, typeof(HttpStatusCodeResult));
+            
+            HttpStatusCodeResult statusResult = result as HttpStatusCodeResult();
+
+            Assert.AreEqual(statusResult.StatusCode, 500);
         }
 
         [TestMethod]

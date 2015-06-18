@@ -60,3 +60,5 @@ D:\Dave\dev\Geometry\David.Wells.Geometry.Tests\bin\Debug\System.Web.Optimizatio
 D:\Dave\dev\Geometry\David.Wells.Geometry.Tests\bin\Debug\Autofac.xml
 D:\Dave\dev\Geometry\David.Wells.Geometry.Tests\obj\Debug\David.Wells.Geometry.Tests.dll
 D:\Dave\dev\Geometry\David.Wells.Geometry.Tests\obj\Debug\David.Wells.Geometry.Tests.pdb
+C:\dev\Geometry\David.Wells.Geometry.Tests\obj\Debug\David.Wells.Geometry.Tests.csprojResolveAssemblyReference.cache
+C:\dev\Geometry\David.Wells.Geometry.Tests\obj\Debug\David.Wells.Geometry.Tests.dll

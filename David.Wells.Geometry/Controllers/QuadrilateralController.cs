@@ -12,29 +12,34 @@ namespace David.Wells.Geometry.Controllers
     public class QuadrilateralController : Controller
     {
         private readonly IQuadrilateralService service;
-        
+        private const string validationMsg = 
         public QuadrilateralController(IQuadrilateralService quadrilateralService)
         {
             service = quadrilateralService;
         }
 
-        public JsonResult GetQuadilateralType(Quadrilateral model)
+        public ActionResult GetQuadilateralType(Quadrilateral model)
         {
-            if (model.Side1 == 0 || model.Side2 == 0 || model.Side3 == 0 || model.Side4 == 0)
+            return getQuadrilateralType(model);
+        }
+
+        private ActionResult getQuadrilateralType(Quadrilateral model)
+        {
+            if (service.ValidateSides())
             {
-                throw new Exception("all sides must have a length greater than 0");
+                return new System.Web.Mvc.HttpStatusCodeResult() { StatusCode = 500, StatusDescription = "All sides must have a length greater than 0" };
             }
-                
+
             return Json(service.DetermineType(model));
         }
 
 
 
-        public JsonResult GetQuadilateralType (int side1, int side2, int side3, int side4)
+        public ActionResult GetQuadilateralType (int side1, int side2, int side3, int side4)
         {
             Quadrilateral model = new Quadrilateral(side1, side2, side3, side4);
 
-            return new JsonResult() { Data = service.DetermineType(model), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return getQuadrilateralType(model);
         }
     }
 }
