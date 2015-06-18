@@ -12,7 +12,8 @@ namespace David.Wells.Geometry.Controllers
     public class QuadrilateralController : Controller
     {
         private readonly IQuadrilateralService service;
-        private const string validationMsg = 
+        private const string validationMsg = "All sides must have a length greater than 0";
+
         public QuadrilateralController(IQuadrilateralService quadrilateralService)
         {
             service = quadrilateralService;
@@ -25,9 +26,9 @@ namespace David.Wells.Geometry.Controllers
 
         private ActionResult getQuadrilateralType(Quadrilateral model)
         {
-            if (service.ValidateSides())
+            if (!service.ValidateSides(model))
             {
-                return new System.Web.Mvc.HttpStatusCodeResult() { StatusCode = 500, StatusDescription = "All sides must have a length greater than 0" };
+                return new System.Web.Mvc.HttpStatusCodeResult(500, validationMsg);
             }
 
             return Json(service.DetermineType(model));

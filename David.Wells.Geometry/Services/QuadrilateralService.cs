@@ -10,10 +10,15 @@ namespace David.Wells.Geometry.Services
     {
         QuadrilateralType DetermineType(Quadrilateral model);
 
-        bool ValidateSides();
+        bool ValidateSides(Quadrilateral model);
     }
+
+    /// <summary>
+    /// Service for determining simple (non-intersecting quadrilater types)
+    /// </summary>
     public class QuadrilateralService : IQuadrilateralService
     {
+
         public QuadrilateralService()
         {
         }
@@ -22,14 +27,10 @@ namespace David.Wells.Geometry.Services
         {
             QuadrilateralType result = QuadrilateralType.None;
 
-            if (isSquare(model))
-                result = QuadrilateralType.Square;
-            else if (isTrapezium(model))
+            if (isTrapezium(model))
                 result = QuadrilateralType.Trapezium;
             else if (isParralellogram(model))
                 result = QuadrilateralType.Parralellogram;
-            else if (isRectangle(model))
-                result = QuadrilateralType.Rectangle;
             else if (isKite(model))
                 result = QuadrilateralType.Kite;
 
@@ -38,22 +39,9 @@ namespace David.Wells.Geometry.Services
 
         private bool isKite(Quadrilateral model)
         {
-            return model.Side1 == model.Side2 &&
-                model.Side3 == model.Side4 &&
-                model.Side2 != model.Side3;
-        }
-
-        private bool isRhombus(Quadrilateral model)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool isRectangle(Quadrilateral model)
-        {
-            return model.Side1 == model.Side3 &&
-                model.Side2 == model.Side4 &&
-                model.Side1 != model.Side2 &&
-                model.Side1 != model.Side3;
+            return model.SideA == model.SideB &&
+                model.SideC == model.SideD &&
+                model.SideB != model.SideC;
         }
 
         private bool isTrapezium(Quadrilateral model)
@@ -63,20 +51,28 @@ namespace David.Wells.Geometry.Services
 
         private bool isParralellogram(Quadrilateral model)
         {
-            return (model.Side1 == model.Side3 && model.Side2 == model.Side4);
+            return (model.SideA == model.SideC && model.SideB == model.SideD);
         }
 
         private bool isSquare(Quadrilateral model)
         {
-            return (model.Side1 == model.Side2 &&
-                model.Side1 == model.Side3 &&
-                model.Side1 == model.Side4);
+            return (model.SideA == model.SideB &&
+                model.SideA == model.SideC &&
+                model.SideA == model.SideD);
         }
 
-
-        public bool ValidateSides()
+        public bool ValidateSides(Quadrilateral model)
         {
-            return model.Side1 > 0 || model.Side2 > 0 || model.Side3 > 0 || model.Side4 > 0;
+            return model.SideA > 0 || model.SideB > 0 || model.SideC > 0 || model.SideD > 0;
+        }
+
+        public bool ValidateAngles(Quadrilateral model)
+        {
+            bool  sumOfAnglesValid = model.AngleAB + model.AngleBC + model.AngleCD + model.AngleDA == 360;
+
+            bool anglesValid = model.AngleAB > 0 && model.AngleBC > 0 && model.AngleCD > 0 && model.AngleDA > 0;
+
+            return sumOfAnglesValid & anglesValid;
         }
     }
 }

@@ -14,6 +14,14 @@ namespace David.Wells.Geometry.Tests.Controllers
     [TestClass]
     public class QuadrilateralControllerTest
     {
+        Mock<QuadrilateralService> mockedService;
+        
+        [TestInitialize]
+        public void Setup()
+        {
+            mockedService = new Mock<QuadrilateralService>();
+        }
+
         [TestMethod]
         ///<summary>
         /// Negative test
@@ -21,39 +29,48 @@ namespace David.Wells.Geometry.Tests.Controllers
         public void Quadrilateral_NegativeTest()
         {
             // Arrange
-            Mock<QuadrilateralService> mockedService = new Mock<QuadrilateralService>();
-//            Mock<HttpContextBase> httpContext = new Mock<HttpContextBase>();
-
             QuadrilateralController controller = new QuadrilateralController(mockedService.Object);
             
             Quadrilateral model = new Quadrilateral(0, 0, 0, 0);
             // Act
-            var result = controller.GetQuadilateralType(model) as JsonResult;
+            var result = controller.GetQuadilateralType(model);
 
             // Assert
-            Assert.IsInstanceOf(result, typeof(HttpStatusCodeResult));
-            
-            HttpStatusCodeResult statusResult = result as HttpStatusCodeResult();
+            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
+
+            HttpStatusCodeResult statusResult = result as HttpStatusCodeResult;
 
             Assert.AreEqual(statusResult.StatusCode, 500);
+            Assert.AreEqual(statusResult.StatusDescription, "All sides must have a length greater than 0");
         }
 
         [TestMethod]
         ///<summary>
-        ///Positive test - Square
+        ///Positive tests
         ///</summary>
-        public void Quadrilateral_Square()
+        public void Quadrilateral_Positivies()
         {
             // Arrange
-            IQuadrilateralService mockedService = new QuadrilateralService();
+            QuadrilateralController controller = new QuadrilateralController(mockedService.Object);
+            Dictionary<QuadrilateralType, Quadrilateral> quadrilaterals = new Dictionary<QuadrilateralType, Quadrilateral>();
 
-            QuadrilateralController controller = new QuadrilateralController(mockedService);
-            Quadrilateral model = new Quadrilateral(5, 5, 5, 5);
-            // Act
-            var result = controller.GetQuadilateralType(model);
+            quadrilaterals.Add(QuadrilateralType.Rhombus, new Quadrilateral(10, 10, 10, 10));
+            quadrilaterals.Add(QuadrilateralType.Trapezium, new Quadrilateral(10, 15, 20, 15));
+            quadrilaterals.Add(QuadrilateralType.Kite, new Quadrilateral(10, 20, 20, 10));
 
-            // Assert
-            Assert.AreEqual(result.Data, QuadrilateralType.Rhombus);
+            foreach (KeyValuePair<QuadrilateralType, Quadrilateral> item in quadrilaterals)
+            {
+                // Act
+                var actual = controller.GetQuadilateralType(item.Value);
+
+                // Assert
+                Assert.IsInstanceOfType(actual, typeof(JsonResult));
+
+                JsonResult result = actual as JsonResult;
+
+                Assert.AreEqual(result.Data, item.Key);
+            }
         }
+
     }
 }
